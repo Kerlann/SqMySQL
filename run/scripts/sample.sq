@@ -12,3 +12,6 @@ on server start:
     else:
         set {playerName_array} to ${MySQL} string "player_name" in {result}
         print {playerName_array}
+    wait 20 second
+    mysql execute "DELETE FROM `user` WHERE `player_name` = '%{username}%'" in ${MySQL}
+    print "deleted"
