@@ -19,8 +19,8 @@ build
 
 # other
 eclipse
-run
 
 # run
-run/scripts/*
-!run/scripts/data.dat
+run/*
+!run/scripts
+run/scrips/sample.sq

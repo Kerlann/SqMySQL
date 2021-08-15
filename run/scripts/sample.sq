@@ -1,0 +1,14 @@
+on script load:
+    print "connect database"
+    set ${MySQL} to the database "jdbc:mysql://localhost:3306/test?user=root&password="
+
+on server start:
+    set {username} to "Kerlann"
+    set {coins} to 10
+    set {isHand} to false
+    set {result} to ${MySQL} result of query "SELECT * FROM `user` WHERE `player_name` = '"+{username}+"'"
+    if {result} is not set:
+        mysql execute "INSERT INTO `user`(`player_name`, `coins`, `isHand`) VALUES ('%{username}%',%{coins}%,%{isHand}%)" in ${MySQL}
+    else:
+        set {playerName_array} to ${MySQL} string "player_name" in {result}
+        print {playerName_array}
