@@ -16,6 +16,7 @@ out
 # gradle
 build
 .gradle
+gradle
 
 # other
 eclipse
@@ -23,4 +24,5 @@ eclipse
 # run
 run/*
 !run/scripts
+!run/scrips/data.dat
 run/scrips/sample.sq
