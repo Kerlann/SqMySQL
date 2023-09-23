@@ -16,13 +16,10 @@ out
 # gradle
 build
 .gradle
-gradle
 
 # other
 eclipse
+run
 
-# run
-run/*
-!run/scripts
-!run/scrips/data.dat
-run/scrips/sample.sq
+# Files from Forge MDK
+forge*changelog.txt

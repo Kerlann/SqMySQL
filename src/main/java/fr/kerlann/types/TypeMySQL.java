@@ -14,11 +14,6 @@ import java.sql.SQLException;
 public class TypeMySQL extends ScriptType< Connection > {
 
     @Override
-    public ScriptElement<?> parse(String typeName) {
-        return null;
-    }
-
-    @Override
     public String toString() {
         return "MySQL Connection";
     }

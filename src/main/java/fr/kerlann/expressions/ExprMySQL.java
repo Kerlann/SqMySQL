@@ -59,35 +59,38 @@ public class ExprMySQL extends ScriptExpression {
                         return new TypeNull();
                     }
                 } catch (SQLException ex) {
+                    ex.printStackTrace();
                     ScriptManager.log.error("Error in " + getLine().getScriptInstance().getName() + "- Line "+getLine().getLineNumber(), ex);
                     return new TypeNull();
                 }
             case 2:
                 conn = (Connection) parameters[0].getObject();
                 CachedRowSet resultSet = (CachedRowSet) parameters[2].getObject();
-                ArrayList< TypeString > typeLists = new ArrayList<>();
+                TypeArray typeArray = new TypeArray();
                 try {
                     while (resultSet.next()) {
-                        typeLists.add(new TypeString(resultSet.getString((String) parameters[1].getObject())));
+                        typeArray.add(new TypeString(resultSet.getString((String) parameters[1].getObject())));
                     }
                     resultSet.release();
-                    return new TypeArray(typeLists);
+                    return typeArray;
                 } catch (SQLException ex) {
+                    ex.printStackTrace();
                     ScriptManager.log.error("Error in " + getLine().getScriptInstance().getName() + "- Line " + getLine().getLineNumber(), ex);
                     return new TypeNull();
                 }
             case 3:
                 conn = (Connection) parameters[0].getObject();
                 resultSet = (CachedRowSet) parameters[2].getObject();
-                ArrayList< TypeBoolean > typeBooleanLists = new ArrayList<>();
+                TypeArray array = new TypeArray();
                 try {
                     while (resultSet.next()) {
-                        typeBooleanLists.add(new TypeBoolean(resultSet.getBoolean((String) parameters[1].getObject())));
+                        array.add(new TypeBoolean(resultSet.getBoolean((String) parameters[1].getObject())));
                     }
                     resultSet.release();
-                    return new TypeArray(typeBooleanLists);
+                    return array;
                 } catch (SQLException ex) {
                     ScriptManager.log.error("Error in " + getLine().getScriptInstance().getName() + "- Line " + getLine().getLineNumber(), ex);
+                    ex.printStackTrace();
                     return new TypeNull();
                 }
         }

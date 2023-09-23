@@ -35,8 +35,6 @@ public class ActMySQL extends ScriptAction {
                     System.err.println(e.getMessage());
                 }
                 return;
-
         }
-
     }
 }

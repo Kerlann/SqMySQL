@@ -16,11 +16,6 @@ import java.sql.SQLException;
 public class TypeResultSet extends ScriptType< CachedRowSet > {
 
     @Override
-    public ScriptElement<?> parse(String typeName) {
-        return null;
-    }
-
-    @Override
     public String toString() {
         return "MySQL resultSet";
     }
